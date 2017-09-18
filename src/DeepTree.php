@@ -46,7 +46,7 @@ class DeepTree
      * @param number $index
      * @return array
      */
-    public  function  makeTree(&$data, $index = 0)
+    public  function  makeTree($data, $index = 0)
     {
         $childs = $this->findChild($data, $index);
         if(empty($childs))
@@ -56,7 +56,7 @@ class DeepTree
         foreach($childs as $k => &$v)
         {
             if(empty($data)) break;
-            $child = self::makeTree($data, $v[$this->primary]);
+            $child = $this->makeTree($data, $v[$this->primary]);
             if(!empty($child))
             {
                 $v[$this->child] = $child;
@@ -72,7 +72,7 @@ class DeepTree
      * @param number $index
      * @return array
      */
-    public function findChild(&$data, $index)
+    public function findChild($data, $index)
     {
         $childs = [];
 		foreach ($data as $k => $v){

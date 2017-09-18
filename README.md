@@ -5,15 +5,17 @@ php递归无限级树形数据
 ## 使用使用方法
 #### 设置主键、parent标识名称 字节点名称
 ```PHP 
-Tree::setConfig($primary = '', $parentId = '', $child = '');
+$tree = new \nbczw8750\tree\DeepTree();
+$tree->setConfig($primary = '', $parentId = '', $child = '');
 ```
 #### 生成tree data
 ```PHP
-Tree::makeTree($data);
+$data = $tree->makeTree($data);
 ```
 运行结果
 
 ``` PHP
+print_r($data);
 Array
 (
     [0] = Array

@@ -22,4 +22,5 @@ $data = [
 ];
 $tree = new \nbczw8750\tree\DeepTree();
 $tree->setConfig($primary = '', $parentId = '', $child = '');
-$tree->makeTree($data);
+$data = $tree->makeTree($data);
+print_r($data);
