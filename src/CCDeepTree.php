@@ -1,5 +1,5 @@
 <?php
-namespace nbczw8750\tree
+namespace nbczw8750\tree;
 /**
  +------------------------------------------------------------------------------
  * CCDeepTree 构建tree状数据
