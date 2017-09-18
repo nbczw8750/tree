@@ -1,0 +1,12 @@
+{
+    "name": "nbczw8750/tree",
+    "description": "无限级树结构生成",
+    "authors": [
+        {
+            "name": "nbczw8750",
+            "email": "nbczw8750@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
