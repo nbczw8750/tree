@@ -13,7 +13,7 @@
     "require": {},
 	"autoload": {
         "psr-4": {
-            "nbczw8750\\sms\\": "src"
+            "nbczw8750\\tree\\": "src"
         }
     }
 }

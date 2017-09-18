@@ -8,25 +8,25 @@ namespace nbczw8750\tree;
  * @version   v1.0
  +------------------------------------------------------------------------------
  */
-class CCDeepTree
+class DeepTree
 {
     /**
      * 主键名称
      * @var string
      */
-    private static $primary = 'id';
+    private $primary = 'id';
 
     /**
      * 父键名称
      * @var string
      */
-    private static $parentId = 'parent_id';
+    private $parentId = 'parent_id';
 
     /**
      * 子节点名称
      * @var string
      */
-    private static $child    = 'child';
+    private $child    = '_child';
 
     /**
      * 修改主键名称、父键名称、子节点名称
@@ -34,10 +34,10 @@ class CCDeepTree
      * @param string $parentId
      * @param string $child
      */
-    public static function setConfig($primary = '', $parentId = '', $child = ''){
-        if(!empty($primary))  self::$primary  = $primary;
-        if(!empty($parentId)) self::$parentId = $parentId;
-        if(!empty($child))    self::$child    = $child;
+    public function setConfig($primary = '', $parentId = '', $child = ''){
+        if(!empty($primary))  $this->primary  = $primary;
+        if(!empty($parentId)) $this->parentId = $parentId;
+        if(!empty($child))    $this->child    = $child;
     }
 
     /**
@@ -46,9 +46,9 @@ class CCDeepTree
      * @param number $index
      * @return array
      */
-    public static  function  makeTree(&$data, $index = 0)
+    public  function  makeTree(&$data, $index = 0)
     {
-        $childs = self::findChild($data, $index);
+        $childs = $this->findChild($data, $index);
         if(empty($childs))
         {
             return $childs;
@@ -56,10 +56,10 @@ class CCDeepTree
         foreach($childs as $k => &$v)
         {
             if(empty($data)) break;
-            $child = self::makeTree($data, $v[self::$primary]);
+            $child = self::makeTree($data, $v[$this->primary]);
             if(!empty($child))
             {
-                $v[self::$child] = $child;
+                $v[$this->child] = $child;
             }
         }
         unset($v);
@@ -72,11 +72,11 @@ class CCDeepTree
      * @param number $index
      * @return array
      */
-    public static function findChild(&$data, $index)
+    public function findChild(&$data, $index)
     {
         $childs = [];
 		foreach ($data as $k => $v){
-			if($v[self::$parentId] == $index){
+			if($v[$this->parentId] == $index){
 				$childs[]  = $v;
                 unset($v);
 			}

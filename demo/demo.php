@@ -20,5 +20,6 @@ $data = [
     ["id"=>"18","city"=>"闸北区", "parent_id"=>"11"],
     ["id"=>"19","city"=>"虹口区", "parent_id"=>"11"],
 ];
-\nbczw8750\CCDeepTree::setConfig($primary = '', $parentId = '', $child = '');
-\nbczw8750\CCDeepTree::makeTree($data);
+$tree = new \nbczw8750\tree\DeepTree();
+$tree->setConfig($primary = '', $parentId = '', $child = '');
+$tree->makeTree($data);
