@@ -72,7 +72,7 @@ class DeepTree
      * @param number $index
      * @return array
      */
-    public function findChild($data, $index)
+    protected function findChild($data, $index)
     {
         $childs = [];
 		foreach ($data as $k => $v){
@@ -82,5 +82,31 @@ class DeepTree
 			}
 		}
 		return $childs;
+    }
+
+    /**
+     * 将深度树转换为列表树
+     * @param $tree
+     * @param int $level
+     * @param string $flag
+     * @return array
+     */
+    public function treeToList($tree , $level = 1 , $flag = "level"){
+        static $list = array();
+        foreach ($tree as $key => $value) {
+            $temp = $value;
+            if (isset($temp[$this->child])) {
+                $temp[$this->child] = true;
+                $temp[$flag] = $level;
+            } else {
+                $temp[$this->child] = false;
+                $temp[$flag] = $level;
+            }
+            array_push($list, $temp);
+            if (isset($value[$this->child])) {
+                $this->treeToList($value[$this->child], ($level + 1));
+            }
+        }
+        return $list;
     }
 }
